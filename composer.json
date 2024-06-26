@@ -1,19 +1,22 @@
 {
-    "name": "luccas/php-pdo",
-    "description": "Repositório para aprendizado de PDO em PHP",
-    "license": "GPL",
     "autoload": {
         "psr-4": {
-            "Luccas\\PhpPdo\\": "src/"
+            "Alura\\Pdo\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "Luccas Arruda"
-        }
-    ],
+    "require": {
+        "ext-pdo": "*"
+    },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.10",
         "phan/phan": "^5.4"
+    },
+    "scripts": {
+        "phan": "phan --allow-polyfill-parser",
+        "cs" : "phpcs --standard=PSR12",
+        "check": [
+            "@phan",
+            "@cs"
+        ] 
     }
 }
