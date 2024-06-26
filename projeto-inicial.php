@@ -6,8 +6,9 @@ require_once 'vendor/autoload.php';
 
 $student = new Student(
     null,
-    'Vinicius Dias',
-    new \DateTimeImmutable('1997-10-15')
+    'Luccas Arruda',
+    new \DateTimeImmutable('2004-11-26')
 );
 
-echo $student->age();
+echo $student->age() . PHP_EOL;
+echo $student->name();
