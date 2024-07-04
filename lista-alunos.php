@@ -12,10 +12,15 @@ $studentsDataList = $statement->fetchAll(PDO::FETCH_ASSOC);
 $studentsList = [];
 
 foreach ($studentsDataList as $studentData) {
+    $studentName = $studentData['name'];
+    echo $studentName . PHP_EOL;
+    $studentId = $studentData['id'];
+    $studentBirthDate = new DateTimeImmutable($studentData['birth_date']);
+    
     $studentsList[] = new Student(
-        $studentData['id'],
-        $studentData['name'],
-        new DateTimeImmutable($studentData['birth_date'])
+        $studentId,
+        $studentName,
+        $studentBirthDate
     );
 }
 
