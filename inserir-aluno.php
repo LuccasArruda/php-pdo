@@ -12,10 +12,12 @@ $studentName = $student->name();
 $studentBirthDate = $student->birthDate()->format('Y-m-d');
 
 
-$sqlInsert = "INSERT INTO students (name, birth_date) VALUES (?,?);";
+$sqlInsert = "INSERT INTO students (name, birth_date) VALUES (:name, :birth_date);";
 $statement = $pdo->prepare($sqlInsert);
-$statement->bindValue(1, $studentName);
-$statement->bindValue(2, $studentBirthDate);
+$statement->bindValue(':name', $studentName); //bindValue -> passa o valor da variável  bindParam -> passa a referência 
+$statement->bindValue(':birth_date', $studentBirthDate);
 if ($statement->execute()) {
-    echo 'Aluno incluído!';
+    echo 'Aluno incluído!' . PHP_EOL;
 }
+
+echo $sqlInsert;
