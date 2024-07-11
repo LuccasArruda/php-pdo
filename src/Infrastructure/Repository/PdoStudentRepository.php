@@ -1,0 +1,37 @@
+<?php
+
+namespace Alura\Pdo\Infrastructure\Repository;
+
+use Alura\Pdo\Domain\Repository\StudentRepository;
+use Alura\Pdo\Infrastructure\Persistence\ConnectionCreator;
+use PDO;
+
+class PdoStudentRepository implements StudentRepository
+{
+    private PDO $connection;
+
+    public function __construct()
+    {
+        $this->connection = ConnectionCreator::createConnection();
+    }
+
+    public function allStudents(): array
+    {
+        
+    }
+    
+    public function studentsBornAt(DateTimeInterface $birthDate): array
+    {
+
+    }
+
+    public function save(Student $student): bool
+    {
+
+    }
+
+    public function remove(Student $student): bool
+    {
+
+    }
+}
