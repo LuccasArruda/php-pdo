@@ -1,9 +1,14 @@
-<?php   
+<?php
 
 namespace Alura\Pdo\Infrastructure\Persistence;
 
-class ConnectionCreator {
-    public function create(){
-        
-    }]
+use PDO;
+
+class ConnectionCreator
+{
+    public static function createConnection(): PDO
+    {
+        $databasePath = __DIR__ . '/../../../banco.sqlite';
+        return new PDO("sqlite:$databasePath");
+    }
 }
