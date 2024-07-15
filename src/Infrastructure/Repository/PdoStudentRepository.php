@@ -4,6 +4,7 @@ namespace Alura\Pdo\Infrastructure\Repository;
 
 use Alura\Pdo\Domain\Repository\StudentRepository;
 use Alura\Pdo\Infrastructure\Persistence\ConnectionCreator;
+use Alura\Pdo\Domain\Model\Student;
 use PDO;
 
 class PdoStudentRepository implements StudentRepository
@@ -32,6 +33,9 @@ class PdoStudentRepository implements StudentRepository
 
     public function remove(Student $student): bool
     {
-
+        $sqlDelete = 'DELETE FROM students WHERE id = :id;';
+        $preparedStatement = $this->connection->prepare($sqlDelete);
+        $preparedStatement->bindValue(':id', $student->id());
+        return $preparedStatement->execute();
     }
 }
