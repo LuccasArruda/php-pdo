@@ -3,18 +3,30 @@
 namespace Alura\Pdo\Domain\Model;
 
 use DomainException;
+use Phone;
 
 class Student
 {
     private ?int $id;
     private string $name;
     private \DateTimeInterface $birthDate;
+    private array $phones = [];
 
     public function __construct(?int $id, string $name, \DateTimeInterface $birthDate)
     {
         $this->id = $id;
         $this->name = $name;
         $this->birthDate = $birthDate;
+    }
+
+    public function addPhone(Phone $newPhone)
+    {
+        $this->phones = $newPhone;
+    }
+
+    public function getPhones(): array
+    {
+        return $this->phones;
     }
 
     public function id(): ?int
